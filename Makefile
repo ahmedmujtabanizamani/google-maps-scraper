@@ -1,10 +1,6 @@
 .PHONY: install
 install:
-	pip install virtualenv
-	python -m venv .venv
-	.\.venv\Scripts\activate.bat
-	pip install poetry==1.8.2
-	poetry install
+	install.bat
 
 .PHONY: scrape
 scrape:

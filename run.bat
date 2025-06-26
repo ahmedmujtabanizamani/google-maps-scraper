@@ -12,4 +12,4 @@ if errorlevel 1 (
 )
 :: searching
 echo "searching for %url%"
-make scrape URL=%url% ::FULL=True
+make scrape URL=%url% FULL=True
