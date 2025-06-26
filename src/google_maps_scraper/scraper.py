@@ -88,9 +88,21 @@ class GoogleMapsScraper:
         """Retrieves location data from a div element and returns it as an Location object."""
         title_element = div.find_element(By.CLASS_NAME, "hfpxzc")
         title = title_element.get_attribute("aria-label")
-        rating = div.find_element(By.CLASS_NAME, "ZkP5Je").get_attribute("aria-label")
+
+        websiteTextXpath = "div//a[contains(@data-value, 'Website')]"
+        try:
+             # print("Hi ", websiteTextXpath)
+            websiteElement = div.find_element(By.XPATH, websiteTextXpath)
+            # print("Hi 2 ", websiteElement.get_attribute("href"))
+            website = websiteElement.get_attribute("href")
+        except:
+            website = ""
+        try:        
+            rating =  div.find_element(By.CLASS_NAME, "ZkP5Je").get_attribute("aria-label")
+        except:
+            rating = ""
         url = title_element.get_attribute("href")
-        return Location(title=title, rating=rating, url=url)
+        return Location(title=title, rating=rating, url=url, website=website)
 
     def _get_locations_from_page(
         self, url: str, driver: webdriver.Chrome, full: bool | None = False
