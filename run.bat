@@ -1,6 +1,6 @@
 @echo off
 :: set python venv if any
-call ".\..\.venv\Scripts\activate.bat"
+call ".venv\Scripts\activate.bat"
 :: search query from user and variables
 set /p query="Search for: "
 :: check if user provided URL or query only
